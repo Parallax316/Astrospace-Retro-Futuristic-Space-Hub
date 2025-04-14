@@ -20,23 +20,6 @@ CRT screen glows, pixel-art icons, ASCII animations, and synthwave-inspired colo
 
 Responsive terminal-style UI for a vintage "hacking into NASA" vibe.
 
-Quick Start
-Clone the repo:
-
-bash
-Copy
-git clone https://github.com/yourusername/astrospace.git  
-Configure OpenRouter:
-
-Get your API key from OpenRouter.
-
-Add it to .env:
-
-Copy
-OPENROUTER_API_KEY=your_key_here  
-Choose Your Model:
-
-Edit config.js to select any OpenRouter-supported model (e.g., llama3-70b, claude-3-opus).
 
 Customize Prompts:
 
