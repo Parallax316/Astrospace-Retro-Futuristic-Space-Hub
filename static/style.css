@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Orbitron' ;
+    font-size: 16px;
+    
+}
+body {
+    background-image: url('image/cosmos.jpeg'); /* Replace with the path to your image */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the image */
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1; /* Ensure it's on top of other elements */
+    pointer-events: none; /* Prevent pointer events from passing through */
+  }
+:root
+{
+    --colour1: hsl(0, 36%, 70%);
+    --colour2: hsl(0, 93%, 68%);
+    --colour3: hsl(0, 6%, 24%);
+}
+
+  .heading h1{
+    text-align: left;
+    font-size: 20px;
+    color: #fff;
+    letter-spacing:0.5cm;
+
+  }
+.container {
+    width: 1490px;
+    height: 800px;
+    border-radius: 50px;
+    position: absolute;
+    margin: 0 auto;
+    top: 30px;
+    left: 10px;
+    background-image: url(image/pixelcut-export.jpeg); /* Replace with the path to your image */
+    background-size: cover; /* Cover the entire container with the image */
+    background-position: center; /* Center the image within the container   
+   */
+
+  }
+  .container h1 {
+    text-align: center;
+    margin-top: 20px; /* Adjust the top margin as needed */
+    font-size: 30px;
+    color: #fff;
+    letter-spacing:0.5cm;
+  }
+  .astronaut {
+    background-image: url(image/astrobot.png);
+    background-size: cover;
+    background-position: center;
+    width: 375px;
+    height: 707px;
+    border-radius: 20;
+    margin-top: 15px;
+    margin-left: 20px; /* Adjust the margin-left as needed */
+  }
+  .chatbox {
+    width: 1064px;
+    height: 717px;
+    border-radius: 30px;
+    position: absolute;
+    top: 70px;
+    left: 395px;
+    display: flex; /* Set the chatbox container to flexbox */
+  flex-direction: column; /* Arrange items vertically */
+  justify-content: space-between; /* Distribute items evenly with spacing */
+}
+.chat {
+    width: 1064px;
+    height: 604px;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.4); /* Black with 40% opacity */
+    margin-top: 0; /* No top margin */
+  }
+  .chat p{
+    margin-top: 30px;
+    margin-left: 20px;
+    color: #fff;
+  }
+  .ques {
+    width: 1064px;
+    height: 101px;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.3); /* Black with 30% opacity */
+    margin-bottom: 10px;
+
+  }
+  .ques form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .ques form input[type="text"] {
+    border: none;
+    background-color: transparent;
+    padding: 10px; /* Adjust padding as needed */
+    width: 1064px;
+    height: 101px;
+    border-radius: 30px;
+    position: relative;
+    color: #fff;
+
+  }
+  
+  .ques form button {
+    
+    position: absolute; /* Position the button absolutely within the input */
+  right: 5px; /* Align the button to the right of the input */
+  width: 50px; /* Adjust the width as needed */
+    color: #fff; /* White text */
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center;
+
+  }

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrobot - Theme Switch</title>
+    
+    <style>
+        /* Add color to theme toggle button */
+        .theme-toggle {
+            color: #00f7ff !important; /* Cyberpunk blue color */
+            z-index: 10000; /* Ensure it's above other elements */
+        }
+    </style>
+    <!-- CYBERPUNK CSS -->
+    <style id="cyberpunk-css">
+        /* Cyberpunk styles here */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #00f7ff;
+            font-family: 'Roboto Mono', monospace;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 800px;
+            height: 80vh;
+            border: 2px solid #00f7ff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+            background: linear-gradient(45deg, #001920, #001013);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            padding: 20px;
+            border-bottom: 2px solid #00f7ff;
+            background: rgba(0, 31, 63, 0.5);
+        }
+
+        .chat-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px #00f7ff;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #00f7ff #001013;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            max-width: 80%;
+            animation: messageAppear 0.3s ease-out;
+        }
+
+        .user-message {
+            background: rgba(0, 247, 255, 0.1);
+            border: 1px solid #00f7ff;
+            margin-left: auto;
+        }
+
+        .bot-message {
+            background: rgba(255, 0, 255, 0.1);
+            border: 1px solid #ff00ff;
+            margin-right: auto;
+        }
+
+        .input-container {
+            padding: 20px;
+            border-top: 2px solid #00f7ff;
+            background: rgba(0, 31, 63, 0.5);
+        }
+
+        .chat-input {
+            width: 100%;
+            padding: 15px;
+            background: #001013;
+            border: 1px solid #00f7ff;
+            color: #00f7ff;
+            font-family: 'Roboto Mono', monospace;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
+        }
+
+        .send-button {
+            background: linear-gradient(45deg, #00f7ff, #ff00ff);
+            border: none;
+            padding: 10px 25px;
+            color: #000;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .send-button:hover {
+            transform: scale(1.05);
+        }
+
+        .typing-indicator {
+            display: none;
+            color: #ff00ff;
+            padding: 10px 20px;
+            font-style: italic;
+        }
+
+        .typing-indicator span {
+            animation: blink 1.4s infinite;
+        }
+
+        @keyframes messageAppear {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #001013;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00f7ff;
+            border-radius: 4px;
+        }
+    </style>
+
+    <!-- RETRO SPACE CSS -->
+    <style id="retro-space-css">
+        /* Retro space styles here */
+        :root {
+            --space-black: #000010;
+            --retro-blue: #00f7ff;
+            --terminal-green: #00ff00;
+            --star-white: #ffffff;
+            --panel-gray: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background: var(--space-black);
+            color: var(--retro-blue);
+            min-height: 100vh;
+            width : 100%%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%%;
+            max-width: 800px !important;
+            margin: 20px auto;
+            border: 2px solid var(--retro-blue);
+            border-radius: 5px;
+            background: rgba(0, 0, 30, 0.9);
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            padding: 1rem;
+            border-bottom: 2px solid var(--retro-blue);
+            background: var(--panel-gray);
+        }
+
+        .chat-header h1 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--retro-blue);
+        }
+
+        .chat-container {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 15, 15, 0.1),
+                rgba(0, 15, 15, 0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 80%;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .user-message {
+            background: rgba(0, 247, 255, 0.1);
+            border: 1px solid var(--retro-blue);
+            margin-left: auto;
+        }
+
+        .bot-message {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid var(--terminal-green);
+            position: relative;
+        }
+
+        .bot-message::before {
+            content: "🤖";
+            position: absolute;
+            left: -23px;
+            top: 0;
+            font-size: 1.1rem;
+        }
+
+        .input-container {
+            display: flex;
+         align-items: center;  /* Aligns items vertically */
+         gap: 10px; /* Adds spacing between input and button */
+            padding: 20px;
+            border-top: 2px solid var(--retro-blue);
+            background: var(--panel-gray);
+        }
+
+        .chat-input {
+            width: 100%;
+            padding: 15px;
+            background: var(--space-black);
+            border: 1px solid var(--retro-blue);
+            color: var(--terminal-green);
+            font-size: 1.2rem;
+            border-radius: 5px;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            box-shadow: 0 0 10px var(--retro-blue);
+        }
+
+        .send-button {
+        
+            right: 25px;
+            bottom: 30px;
+            background: none;
+            border: none;
+            color: var(--retro-blue);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .send-button:hover {
+            color: var(--terminal-green);
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 10px;
+            color: var(--terminal-green);
+        }
+
+        .typing-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin-right: 3px;
+            background: var(--terminal-green);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        @keyframes typing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* CRT Screen Effect */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15) 0px,
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            z-index: 999;
+        }
+
+        .stars {
+            position: fixed;
+            width: 50%; /* Only cover right half */
+            right: 0;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1; /* Behind chat container */
+        }
+        
+        .theme-container {
+            position: relative;
+            z-index: 2; /* Above stars */
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 1s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+    </style>
+
+    <style>
+        /* Theme toggle base styles */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px 15px;
+            cursor: pointer;
+            border: 2px solid;
+            background: rgba(0,0,0,0.5);
+        }
+
+        /* Hide inactive themes */
+        .theme-container {
+            display: none;
+        }
+
+        body.cyberpunk .cyberpunk-theme,
+        body.retro-space .retro-space-theme {
+            display: block;
+        }
+
+        .crt-overlay,
+        .stars {
+            display: none;
+        }
+
+        body.retro-space .crt-overlay,
+        body.retro-space .stars {
+            display: block;
+        }
+    </style>
+</head>
+<body class="cyberpunk">
+    <button class="theme-toggle" onclick="switchTheme()">Switch Theme</button>
+
+    <!-- CYBERPUNK INTERFACE -->
+    <div class="theme-container cyberpunk-theme">
+        <!-- Cyberpunk HTML here -->
+        <div class="chat-container">
+            <div class="chat-header">
+                <h1>Astrobot v2.14.2</h1>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">
+                    <p>Greetings, space traveler! What cosmic query brings you here today?</p>
+                </div>
+            </div>
+            <div class="typing-indicator" id="typing-indicator">
+                <span>●</span><span>●</span><span>●</span>
+            </div>
+            <div class="input-container">
+                <textarea class="chat-input" id="user-input" rows="2" placeholder="Transmit your query..."></textarea>
+                <button class="send-button" onclick="sendMessage()">SEND PULSE</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RETRO SPACE INTERFACE -->
+    <div class="theme-container retro-space-theme">
+        <!-- Retro space HTML here -->
+        <div class="stars" id="stars"></div>
+        <div class="crt-overlay"></div>
+        
+        <div class="container">
+            <div class="chat-header">
+                <h1>🚀 Astrobot v1.0.0</h1>
+            </div>
+            
+            <div class="chat-container" id="chatContainer">
+                <div class="message bot-message">
+                    Greetings, astronaut! I'm Astrobot 🌌<br>
+                    Ready to explore the cosmos? Ask me about:<br>
+                    • Space facts 🌠<br>
+                    • Astronomy trivia 🪐<br>
+                    • Space missions 🚀<br>
+                    • Cosmic phenomena 🌑
+                </div>
+                {% if response %}
+                    <div class="message bot-message">{{ response }}</div>
+                {% endif %}
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot" style="animation-delay: 0.2s"></div>
+                <div class="typing-dot" style="animation-delay: 0.4s"></div>
+            </div>
+            <div class="input-container">
+                <input type="text" class="chat-input" id="userInput" placeholder="Transmit message...">
+                <button class="send-button" onclick="sendMessage()">🚀</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMMON ELEMENTS -->
+    <div class="stars"></div>
+    <div class="crt-overlay"></div>
+
+    <script>
+        // Theme Management
+        let currentTheme = 'cyberpunk';
+
+        function switchTheme() {
+            currentTheme = currentTheme === 'cyberpunk' ? 'retro-space' : 'cyberpunk';
+            document.body.className = currentTheme;
+            
+            if(currentTheme === 'retro-space') {
+                initializeRetroTheme();
+            }
+        }
+
+        // COMMON FUNCTIONALITY
+       
+        // Updated COMMON FUNCTIONALITY
+        async function sendMessage() {
+            // Get active theme inputs
+            const cyberInput = document.getElementById('user-input');
+            const retroInput = document.getElementById('userInput');
+            const message = currentTheme === 'cyberpunk' 
+                ? cyberInput.value.trim() 
+                : retroInput.value.trim();
+
+            if (!message) return;
+
+            // Clear correct input field
+            if (currentTheme === 'cyberpunk') {
+                cyberInput.value = '';
+            } else {
+                retroInput.value = '';
+            }
+
+            try {
+                // Update fetch URL to match your Flask server
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ user_input: message })
+                });
+
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                
+                const data = await response.json();
+                if (data.response) {
+                    const containerId = currentTheme === 'cyberpunk' 
+                        ? 'chat-messages' 
+                        : 'chatContainer';
+                    const container = document.getElementById(containerId);
+                    
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = `message bot-message`;
+                    messageDiv.innerHTML = `<p>${data.response}</p>`;
+                    container.appendChild(messageDiv);
+                    container.scrollTop = container.scrollHeight;
+                }
+            } catch (error) {
+                console.error('Fetch Error:', error);
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'message error-message';
+                errorDiv.textContent = `Error: ${error.message}`;
+                document.getElementById(currentTheme === 'cyberpunk' ? 'chat-messages' : 'chatContainer')
+                    .appendChild(errorDiv);
+            }
+        }
+
+        // RETRO INITIALIZATION
+        function initializeRetroTheme() {
+            const starsContainer = document.querySelector('.stars');
+            starsContainer.innerHTML = '';
+            
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.width = `${Math.random() * 3}px`;
+                star.style.height = star.style.width;
+                star.style.animationDuration = `${0.5 + Math.random() * 1.5}s`;
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // INITIAL SETUP
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.chat-input').forEach(input => {
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') sendMessage();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
