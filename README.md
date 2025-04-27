@@ -30,7 +30,7 @@ Quick Start
 Clone the repo:
 
 bash
-git clone https://github.com/yourusername/astrospace.git  
+git clone https://github.com/Parallax316/Astrospace-Retro-Futuristic-Space-Hub.git  
 
 Configure OpenRouter:
 
